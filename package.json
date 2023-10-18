@@ -39,15 +39,15 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/hungvdshidro/react-native-ui-library",
-  "author": "Hung Vu Danh <hungvd@adamo.software> (https://github.com/hungvdshidro)",
+  "repository": "https://github.com/hungshidro/react-native-ui-library",
+  "author": "hungshidro <hungshidro@gmail.com> (https://github.com/hungshidro)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/hungvdshidro/react-native-ui-library/issues"
+    "url": "https://github.com/hungshidro/react-native-ui-library/issues"
   },
-  "homepage": "https://github.com/hungvdshidro/react-native-ui-library#readme",
+  "homepage": "https://github.com/hungshidro/react-native-ui-library#readme",
   "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
+    "access": "public"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^17.0.2",
