@@ -1,5 +1,5 @@
 {
-  "name": "react-native-ui-library",
+  "name": "@hungshidro/react-native-ui-library",
   "version": "0.1.0",
   "description": "a library made my hungshidro",
   "main": "lib/commonjs/index",
