@@ -2,7 +2,7 @@
   "compilerOptions": {
     "rootDir": ".",
     "paths": {
-      "react-native-ui-library": ["./src/index"]
+      "@hungshidro/react-native-ui-library": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
