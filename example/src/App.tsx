@@ -3,10 +3,9 @@ import * as React from 'react';
 
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import {
-  createColorWrapper,
   multiply,
-  // useColorTheme,
-} from 'react-native-ui-library';
+  createColorWrapper,
+} from '@hungshidro/react-native-ui-library';
 
 const config = {
   dark: {
@@ -21,23 +20,6 @@ const config = {
 
 const colorProvider = createColorWrapper(config);
 const { ColorProvider, setThemeColor, useColorTheme } = colorProvider;
-
-const TestComponent = () => {
-  const color = useColorTheme();
-  console.log(color?.background);
-  React.useEffect(() => {
-    console.log('RENDER');
-  }, []);
-  return (
-    <View
-      style={{
-        backgroundColor: color?.background,
-      }}
-    >
-      <Text style={{ color: color?.color }}>gdfg: {color?.background}</Text>
-    </View>
-  );
-};
 
 const insideConfig = {
   dark: {
@@ -55,6 +37,23 @@ const {
   setThemeColor: setThemeInside,
   useColorTheme: useThemeInside,
 } = provider;
+
+const TestComponent = () => {
+  const color = useColorTheme();
+  console.log(color?.background);
+  React.useEffect(() => {
+    console.log('RENDER');
+  }, []);
+  return (
+    <View
+      style={{
+        backgroundColor: color?.background,
+      }}
+    >
+      <Text style={{ color: color?.color }}>gdfg: {color?.background}</Text>
+    </View>
+  );
+};
 
 const TestInsideComponent = () => {
   const colorInside = useThemeInside();

@@ -1,6 +1,6 @@
 {
-  "name": "react-native-ui-library",
-  "version": "0.1.0",
+  "name": "@hungshidro/react-native-ui-library",
+  "version": "0.2.1",
   "description": "a library made my hungshidro",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -39,15 +39,15 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/hungvdshidro/react-native-ui-library",
-  "author": "Hung Vu Danh <hungvd@adamo.software> (https://github.com/hungvdshidro)",
+  "repository": "https://github.com/hungshidro/react-native-ui-library",
+  "author": "hungshidro <hungshidro@gmail.com> (https://github.com/hungshidro)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/hungvdshidro/react-native-ui-library/issues"
+    "url": "https://github.com/hungshidro/react-native-ui-library/issues"
   },
-  "homepage": "https://github.com/hungvdshidro/react-native-ui-library#readme",
+  "homepage": "https://github.com/hungshidro/react-native-ui-library#readme",
   "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
+    "access": "public"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^17.0.2",
@@ -84,7 +84,7 @@
   ],
   "packageManager": "yarn@3.6.1",
   "engines": {
-    "node": ">= 18.0.0"
+    "node": ">= 12.0.0"
   },
   "jest": {
     "preset": "react-native",

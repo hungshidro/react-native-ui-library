@@ -21,10 +21,11 @@ export function multiply(a: number, b: number): Promise<number> {
   return UiLibrary.multiply(a, b);
 }
 
-export type {
-  ColorProviderProps,
-  ColorConfig,
-  KeyPath,
+export {
+  type ColorProviderProps,
+  type ColorConfig,
+  type KeyPath,
+  type ColorProvider,
 } from './providers/ColorProvider/ColorProvider';
 
 export { createColorWrapper } from './providers/ColorProvider/ColorWrapper';

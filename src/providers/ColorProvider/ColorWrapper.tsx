@@ -12,6 +12,7 @@ import {
   type ColorProviderRefObject,
 } from '../../types';
 import { COLOR_STORAGE_KEY } from '../../contants';
+import { error, ERROR_TYPE } from '../../utils';
 
 type SetThemeKeyParams<T> = T | ((prevThme: T) => T);
 
@@ -55,9 +56,8 @@ export const createColorWrapper = <
   config: T,
   storageKey: string = COLOR_STORAGE_KEY
 ) => {
-  let indexRef = 0;
   let crrTheme: KeyPath<T> = Object.keys(config)[0] as KeyPath<T>;
-  const context = React.createContext('dark');
+  const context = React.createContext('DEFAULT');
   context.displayName = storageKey;
 
   /**
@@ -71,8 +71,11 @@ export const createColorWrapper = <
     if (typeof theme === 'function') themeKey = theme(crrTheme);
     else themeKey = theme;
 
+    if (!Object.keys(config).includes(themeKey)) {
+      throw error(ERROR_TYPE.THEME_KEY_NOT_FOUND);
+    }
+
     crrTheme = themeKey;
-    console.log(indexRef, storageKey);
     getRef(storageKey)?._setTheme(themeKey);
   };
 
@@ -95,15 +98,23 @@ export const createColorWrapper = <
 
     const setRef = useCallback((ref: ColorProviderRef<T, K> | null) => {
       if (ref) {
-        const newRef = {
-          id: storageKey,
-          ref: {
-            current: ref,
-          },
-        };
-        listRef.push(newRef);
-        indexRef = listRef.length - 1;
-        console.log('indexRef', indexRef, storageKey, listRef);
+        const storageKeyExist = listRef.find((r) => r.id === storageKey);
+        if (!storageKeyExist) {
+          const newRef = {
+            id: storageKey,
+            ref: {
+              current: ref,
+            },
+          };
+          listRef.push(newRef);
+        } else {
+          throw error(ERROR_TYPE.STORAGE_KEY_DUPLICATE);
+        }
+      } else {
+        const targetRefIndex = listRef.findIndex((r) => r.id === storageKey);
+        if (targetRefIndex >= 0) {
+          listRef.splice(targetRefIndex, 1);
+        }
       }
     }, []);
     return (
@@ -123,6 +134,11 @@ export const createColorWrapper = <
    */
   const useColorTheme = (): T[L] => {
     const color = React.useContext(context);
+
+    //throw error if using useColorTheme outside its Provider
+    if (color === 'DEFAULT')
+      throw error(ERROR_TYPE.USE_COLOR_THEME_OUTSIDE_COLOR_PROVIDER);
+
     const colorTheme = config[color] as T[L];
     return colorTheme ? colorTheme : ({} as T[L]);
   };
